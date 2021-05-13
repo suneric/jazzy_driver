@@ -18,7 +18,7 @@ def raiseIfFault():
 class JazzyLowLevelControl:
     def __init__(self):
         rospy.loginfo("Setting Up the Node")
-        rospy.init_node("Jazzy ROS Interface", anonymous=True, log_level=rospy.INFO)
+        rospy.init_node("Jazzy ROS Interface", anonymous=True)
         self.twist_sub = rospy.Subscriber("/cmd_vel", Twist, self.set_motors_cmd)
         rospy.loginfo("> Subscriber Correctly Initilized")
         rospy.loginfo("Initialization Complete")
@@ -36,23 +36,23 @@ class JazzyLowLevelControl:
     def motor_linear_speed(self,x):
         wheel_d = 0.2286 # m 9 # inch
         N = x*(60/(2*math.pi))/(wheel_d/2)
-        print("linear speed", x, "m/s", N, "rpm")
+        print("linear speed", x, "m/s", int(N), "rpm")
         if N > MAX_SPEED:
             N = MAX_SPEED
         if N < -MAX_SPEED:
             N = -MAX_SPEED
-        return N, N
+        return int(N), int(N)
 
     def motor_angular_speed(self,z):
         wheel_d = 0.2286 # m
         t_rad = 0.6287 # m
-        N = z*t_rad*(60/2(math.pi))/(wheel_d/2)
-        print("angular speed",z "rad/s", N, "rpm")
+        N = z*t_rad*(60/(2*math.pi))/(wheel_d/2)
+        print("angular speed",z, "rad/s", int(N), "rpm")
         if N > MAX_SPEED:
             N = MAX_SPEED
         if N < -MAX_SPEED:
             N = -MAX_SPEED
-        return N, -N
+        return -int(N), int(N)
 
     def run(self):
         rate = rospy.Rate(10)
