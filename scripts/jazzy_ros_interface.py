@@ -1,9 +1,9 @@
+ #!/usr/bin/env python
 import rospy
 from geometry_msgs.msg import Twist
 import time
 from dual_g2_hpmd_rpi import motors, MAX_SPEED
 import math
-
 
 class DriverFault(Exception):
     def __init__(self, driver_num):
@@ -18,20 +18,24 @@ def raiseIfFault():
 class JazzyLowLevelControl:
     def __init__(self):
         rospy.loginfo("Setting Up the Node")
-        rospy.init_node("Jazzy ROS Interface", anonymous=True)
-        self.twist_sub = rospy.Subscriber("/cmd_vel", Twist, self.set_motors_cmd)
+        rospy.init_node("jazzy_ros_interface", anonymous=True)
+        self.twist_sub = rospy.Subscriber('/cmd_vel', Twist, self.set_motors_cmd)
         rospy.loginfo("> Subscriber Correctly Initilized")
         rospy.loginfo("Initialization Complete")
 
     def set_motors_cmd(self,msg):
-        s1,s2 = self.motor_linear_speed(msg.linear.x)
-        motors.setSpeeds(s1,s2)
-        raiseIfFault()
-        time.sleep(0.002)
-        s1,s2 = self.motor_angular_speed(msg.angular.z)
-        motors.setSpeeds(s1,s2)
-        raiseIfFault()
-        time.sleep(0.002)
+        x = msg.linear.x
+        z = msg.angular.z
+        if x:
+            s1,s2 = self.motor_linear_speed(msg.linear.x)
+            motors.setSpeeds(s1,s2)
+            raiseIfFault()
+            time.sleep(0.002)
+        else:
+            s1,s2 = self.motor_angular_speed(msg.angular.z)
+            motors.setSpeeds(s1,s2)
+            raiseIfFault()
+            time.sleep(0.002)
 
     def motor_linear_speed(self,x):
         wheel_d = 0.2286 # m 9 # inch
@@ -41,7 +45,7 @@ class JazzyLowLevelControl:
             N = MAX_SPEED
         if N < -MAX_SPEED:
             N = -MAX_SPEED
-        return int(N), int(N)
+        return -int(N), -int(N)
 
     def motor_angular_speed(self,z):
         wheel_d = 0.2286 # m
