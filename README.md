@@ -32,3 +32,35 @@ sudo systemctl enable pigpiod
 
 
 ## set ROS master
+
+
+## create boot script for raspberry pi using [systemd](https://magiccvs.byu.edu/wiki/#!computers/systemd.md)
+- add a systemd service
+  1. cd /etc/systemd/system
+  2. create a file named jazzy-service.service and include the following:
+    ```
+    [Unit]
+    Description="Jazzy ROS start"
+    After=network-online.target
+
+    [Service]
+    Type=simple
+    User=pi
+    Group=pi
+    ExecStart=/home/ros_catkin_ws/src/jazzy_driver/auto_start.sh
+
+    [Install]
+    WantedBy=default.target
+    ```
+- Before booting, test the service with
+  ```
+  sudo systemctl start jazzy-service
+  ```
+  check if it is running or failed with
+  ```
+  sudo systemctl status jazzy-service
+  ```
+- make sure to install the service with
+  ```
+  sudo systemctl enable jazzy-service
+  ```
