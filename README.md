@@ -13,7 +13,7 @@ This is a python library for [Jazzy Elite ES](https://www.pridemobility.com/jazz
     - [pigpio](http://abyz.me.uk/rpi/pigpio/)
 
 
-## Installation
+## Installation (on raspberry pi)
 - install ros [melodic]
 - install pigpio
 ```
@@ -28,16 +28,37 @@ Optionally, to automatically start the daemon everytime your Rasberry Pi boots, 
 sudo systemctl enable pigpiod
 ```
 
-## Download
+## Download this repo to raspberry pi
+```
+git clone https://github.com/suneric/jazzy_driver.git
+```
+make two files executable
+```
+sudo chmod +x ./auto_start.sh
+sudo chmod +x ./scripts/jazzy_ros_interface.py
+```
 
 
-## set ROS master
+## ROS-network
+1. set ROS master on raspberry pi
+  open ~/.bashrc
+    export ROS_MASTER_URI=http://192.168.1.19:11311
+    export ROS_IP=192.168.1.19
+2. use ROS master on client machile
+  open ~/.bashrc
+  export ROS_MASTER_URI=http:/192.168.1.19:11311
+  export ROS_IP=192.168.1.171
 
 
 ## create boot script for raspberry pi using [systemd](https://magiccvs.byu.edu/wiki/#!computers/systemd.md)
 - add a systemd service
   1. cd /etc/systemd/system
-  2. create a file named jazzy-service.service and include the following:
+  2. create a file named jazzy-service.service
+    ```
+    sudo touch jazzy-service.service
+    sudo vim jazzy-service.service
+    ```
+    and include the following:
     ```
     [Unit]
     Description="Jazzy ROS start"
@@ -52,6 +73,7 @@ sudo systemctl enable pigpiod
     [Install]
     WantedBy=default.target
     ```
+    then save and quit (:qw!)
 - Before booting, test the service with
   ```
   sudo systemctl start jazzy-service
