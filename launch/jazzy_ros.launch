@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <arg name="align_depth" value="true"/>
+  </include>
+  <include file="$(find jazzy_driver)/launch/jazzy_driver_ros.launch"/>
+</launch>
