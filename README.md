@@ -24,3 +24,20 @@ sudo chmod +x ./scripts/jazzy_ros_interface.py
 
 ## Setup
 - Follow SETUP.md to setup the service
+
+
+## Use and control on client machine
+1. set ROS network on client machine
+  open ~/.bashrc
+  ```
+  export ROS_MASTER_URI=http:/192.168.1.19:11311
+  export ROS_IP=[clinet machine ip]
+  ```
+2. check /cmd_vel is available
+```
+  rostopic list
+```
+3. control with teleop-twist-keyboard
+```
+sudo apt install ros-[verion]-teleop-twist-keyboard
+```

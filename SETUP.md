@@ -10,8 +10,8 @@
   ```
   interface eth0 [or wlan0]
   static ip_address=192.168.1.19/24
-  static routers=192.168.0.1
-  static domain_name_servers=192.168.0.1 8.8.8.8
+  static routers=192.168.1.1
+  static domain_name_servers=192.168.1.1 1.1.1.1 8.8.8.8
   ```
   - reboot
   - check your ip address
@@ -24,13 +24,6 @@
   ```
   export ROS_MASTER_URI=http://192.168.1.19:11311
   export ROS_IP=192.168.1.19
-  ```
-
-3. use ROS master on client machile
-  open ~/.bashrc
-  ```
-  export ROS_MASTER_URI=http:/192.168.1.19:11311
-  export ROS_IP=192.168.1.171
   ```
 
 ## create boot script for raspberry pi using [systemd](https://magiccvs.byu.edu/wiki/#!computers/systemd.md)
