@@ -4,13 +4,12 @@ This is a python library for [Jazzy Elite ES](https://www.pridemobility.com/jazz
 
 
 ## Hardware
-- Raspberry pi or Jetson nano
+- Raspberry pi (OS: buster)
 - Jazzy Elite ES mobile base
 - Pololu Dual G2 High-Power Motor Driver 18v22 for Rasberry Pi
 
 ## Installation
-
-## Setup
+Follow INSTALL_RASPBERRY_PI.md to install ROS melodic and pigpio
 
 ## Download this repo
 ```
@@ -22,3 +21,6 @@ make two files executable
 sudo chmod +x ./auto_start.sh
 sudo chmod +x ./scripts/jazzy_ros_interface.py
 ```
+
+## Setup
+- Follow SETUP.md to setup the service

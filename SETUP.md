@@ -21,14 +21,17 @@
 
 2. set ROS master on raspberry pi
   open ~/.bashrc
-    export ROS_MASTER_URI=http://192.168.1.19:11311
-    export ROS_IP=192.168.1.19
+  ```
+  export ROS_MASTER_URI=http://192.168.1.19:11311
+  export ROS_IP=192.168.1.19
+  ```
 
 3. use ROS master on client machile
   open ~/.bashrc
+  ```
   export ROS_MASTER_URI=http:/192.168.1.19:11311
   export ROS_IP=192.168.1.171
-
+  ```
 
 ## create boot script for raspberry pi using [systemd](https://magiccvs.byu.edu/wiki/#!computers/systemd.md)
 - add a systemd service
@@ -48,7 +51,7 @@
     Type=simple
     User=pi
     Group=pi
-    ExecStart=/home/ros_catkin_ws/src/jazzy_driver/auto_start.sh
+    ExecStart=/home/pi/catkin_ws/src/jazzy_driver/auto_start.sh
 
     [Install]
     WantedBy=default.target
