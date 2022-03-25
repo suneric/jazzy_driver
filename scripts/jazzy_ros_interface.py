@@ -3,6 +3,7 @@ import rospy
 from geometry_msgs.msg import Twist
 import time
 from dual_g2_hpmd_rpi import motors, MAX_SPEED
+# from mdds30_rpi import motors, MAX_SPEED
 import math
 
 class DriverFault(Exception):
