@@ -51,9 +51,10 @@ $ echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 
 ## Install pigpio driver
 Follow the [tutorial](https://github.com/pololu/dual-g2-high-power-motor-driver-rpi) to install pigpio driver
-```
+```shell
 sudo apt-get update
 sudo apt-get install pigpio python-pigpio
+# pip install pigpio
 ```
 start the service and check status
 ```
@@ -63,4 +64,9 @@ sudo systemctl status pigpoid
 auto start the service when boot
 ```
 sudo systemctl enable pigpoid
+```
+
+## Install [RPi.GPIO library](https://pypi.org/project/RPi.GPIO/)
+```shell
+pip install RPi.GPIO
 ```
