@@ -50,10 +50,11 @@ $ echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 ```
 
 ## Install pigpio driver
-Or, follow the [tutorial](https://github.com/pololu/dual-g2-high-power-motor-driver-rpi) to install pigpio driver
-```
+Follow the [tutorial](https://github.com/pololu/dual-g2-high-power-motor-driver-rpi) to install pigpio driver
+```shell
 sudo apt-get update
 sudo apt-get install pigpio python-pigpio
+# pip install pigpio
 ```
 start the service and check status
 ```
