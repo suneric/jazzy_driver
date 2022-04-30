@@ -22,9 +22,14 @@
 2. set ROS master on raspberry pi
   open ~/.bashrc
   ```
-  export ROS_MASTER_URI=http://192.168.1.19:11311
-  export ROS_IP=192.168.1.19
+  export ROS_MASTER_URI=http://ubuntu-Aurora-R7:11311
+  export ROS_HOSTNAME=driver-raspi
   ```
+3. add hostname to /etc/hosts
+```
+127.0.1.1 driver-raspi
+192.168.1.7 ubuntu-Aurora-R7
+```
 
 ## create boot script for raspberry pi using [systemd](https://magiccvs.byu.edu/wiki/#!computers/systemd.md)
 - add a systemd service
@@ -38,7 +43,8 @@
     ```
     [Unit]
     Description="Jazzy ROS start"
-    After=network-online.target
+    Wants=network-online.target
+    After=network.target network-online.target
 
     [Service]
     Type=simple

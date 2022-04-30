@@ -1,6 +1,6 @@
 #!usr/bin/env bash
-export ROS_MASTER_URI=http://192.168.1.19:11311
-export ROS_IP=192.168.1.19
+export ROS_MASTER_URI=http://ubuntu-Aurora-R7:11311
+export ROS_HOSTNAME=driver-raspi
 
 source ~/ros_catkin_ws/devel_isolated/setup.bash
 source ~/catkin_ws/devel/setup.bash
