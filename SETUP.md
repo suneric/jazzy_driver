@@ -23,11 +23,11 @@
   open ~/.bashrc
   ```
   export ROS_MASTER_URI=http://ubuntu-Aurora-R7:11311
-  export ROS_HOSTNAME=driver-raspi
+  export ROS_HOSTNAME=raspberrypi
   ```
 3. add hostname to /etc/hosts
 ```
-127.0.1.1 driver-raspi
+127.0.1.1 raspberrypi
 192.168.1.7 ubuntu-Aurora-R7
 ```
 
