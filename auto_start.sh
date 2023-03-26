@@ -1,6 +1,6 @@
 #!usr/bin/env bash
-export ROS_MASTER_URI=http://ubuntu-Aurora-R7:11311
 export ROS_HOSTNAME=raspberrypi
+export ROS_MASTER_URI=http://192.168.1.7:11311
 
 source ~/ros_catkin_ws/devel_isolated/setup.bash
 source ~/catkin_ws/devel/setup.bash
